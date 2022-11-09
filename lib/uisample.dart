@@ -45,13 +45,14 @@ class _UiSampleState extends State<UiSample> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    print(size.width);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white60,
-          leading: Image.asset("assets/images/menu.png",color: Colors.blue.shade900,),
-          title: Text("Xentice",style: GoogleFonts.comfortaa(color: Colors.blue.shade700,fontSize: 28,fontWeight:FontWeight.bold)),
+          leading: Icon(Icons.sort,color: Colors.blue.shade900,),
+          title: Text("xentice",style: GoogleFonts.comfortaa(color: Colors.blue.shade700,fontSize: 28,)),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -143,49 +144,52 @@ class _UiSampleState extends State<UiSample> {
                     ),
                   ],
                 ),
+                SizedBox(height: size.height*.012),
                 Container(
-                  height: 85,
-                  child: ListView.builder(
+                  height: size.height*.099,
+                  child: ListView.separated(
+                    padding: EdgeInsets.only(left: size.width*.025),
+                    separatorBuilder: (context, index){
+                      return SizedBox(width:size.width*.025);
+                    },
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                     scrollDirection:Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (context,index) {
                       print(index);
-                      return Padding(
-                        padding:  EdgeInsets.all(8.0),
-                        child: InkWell(
-                          onTap: (){
-                            setState(() {
-                             selected_index=index;
-                            });
-                          },
-                          child: Container(
-                              width: size.width*0.21,
-                              height: 100,
-                            decoration: BoxDecoration(
-                              color:selected_index == index? Colors.blue.shade900:null,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                              ),
+                      return InkWell(
+                        onTap: (){
+                          setState(() {
+                           selected_index=index;
+                          });
+                        },
+                        child: Container(
+                            width: size.width*0.21,
+                            height: 100,
+                          decoration: BoxDecoration(
+                            color:selected_index == index? Colors.blue.shade900:null,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Colors.grey.shade300,
                             ),
-                            child: Stack(
-                              children: [
-                                Padding(
-                                  padding:  EdgeInsets.only(bottom:size.height*0.01,left: size.width*0.050,),
-                                  child: Image.asset("assets/images/land.png",height: size.height*0.060,color:selected_index == index? Colors.white:null,),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.only(top:size.height*0.06,left: size.height*0.015,),
-                                  child: Text('''Industrial''',style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color:selected_index == index? Colors.white:Colors.grey),),
-                                ),Padding(
-                                  padding:  EdgeInsets.only(top:size.height*0.076,left: size.height*0.031,),
-                                  child: Text('''Land''',style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color:selected_index == index? Colors.white:Colors.grey),),
-                                ),
-                              ],
-                            )
                           ),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.only(left: size.width*.038),
+                                child: Image.asset("assets/images/land.png",height: size.height*0.060,color:selected_index == index? Colors.white:Colors.grey.shade600,),
+                              ),
+                              Padding(
+                                padding:  EdgeInsets.only(top:size.height*0.06,left: size.height*0.015,),
+                                child: Text('''Industrial''',style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color:selected_index == index? Colors.white:Colors.grey),),
+                              ),
+                              Padding(
+                                padding:  EdgeInsets.only(top:size.height*0.076,left: size.height*0.031,),
+                                child: Text('''Land''',style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color:selected_index == index? Colors.white:Colors.grey),),
+                              ),
+                            ],
+                          )
                         ),
                       );
                     }
@@ -194,7 +198,7 @@ class _UiSampleState extends State<UiSample> {
                 Stack(
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(left: size.height*0.01,top: size.height*0.03),
+                      padding:  EdgeInsets.only(left: size.height*0.01,top: size.height*0.04),
                       child: Container(
                         width: size.width*0.5,
                         height: size.height*0.05,
@@ -336,7 +340,7 @@ class _UiSampleState extends State<UiSample> {
                           padding:  EdgeInsets.only(top: size.height*0.27,left: size.height*0.03),
                           child: Text("Woxro office",style: TextStyle(fontWeight: FontWeight.bold),),
                         ),Padding(
-                          padding:  EdgeInsets.only(top: size.height*0.27,left: size.width*0.25),
+                          padding:  EdgeInsets.only(top: size.height*0.27,left: size.width*.269),
                           child: Text("Woxro office",style: TextStyle(fontWeight: FontWeight.bold),),
                         ),
                       ],
@@ -344,11 +348,11 @@ class _UiSampleState extends State<UiSample> {
                     Row(
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(top: size.height*.28,left: size.width*.34),
+                          padding:  EdgeInsets.only(top: size.height*.2764,left: size.width*.3310),
                           child: Text("Rs.2500/Hr",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red.shade900,fontSize: 9),),
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(top: size.height*.28,left: size.width*.33),
+                          padding:  EdgeInsets.only(top: size.height*.2764,left: size.width*.3564),
                           child: Text("Rs.2500/Hr",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red.shade900,fontSize: 9),),
                         ),
                       ],
@@ -523,7 +527,7 @@ class _UiSampleState extends State<UiSample> {
                           padding:  EdgeInsets.only(top: size.height*0.60,left: size.height*0.03),
                           child: Text("Woxro office",style: TextStyle(fontWeight: FontWeight.bold),),
                         ),Padding(
-                          padding:  EdgeInsets.only(top: size.height*0.60,left: size.width*0.25),
+                          padding:  EdgeInsets.only(top: size.height*0.60,left: size.width*.269),
                           child: Text("Woxro office",style: TextStyle(fontWeight: FontWeight.bold),),
                         )
                       ],
@@ -531,11 +535,11 @@ class _UiSampleState extends State<UiSample> {
                     Row(
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(top: size.height*.61,left: size.width*.34),
+                          padding:  EdgeInsets.only(top: size.height*.6055,left: size.width*.34),
                           child: Text("Rs.2500/Hr",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red.shade900,fontSize: 9),),
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(top: size.height*.60,left: size.width*.33),
+                          padding:  EdgeInsets.only(top: size.height*.6055,left: size.width*.3564),
                           child: Text("Rs.2500/Hr",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red.shade900,fontSize: 9),),
                         ),
                       ],

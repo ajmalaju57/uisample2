@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:uisample2/uisample.dart';
 
@@ -30,8 +31,8 @@ class _Location1State extends State<Location1> {
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white60,
-          leading: Image.asset("assets/images/menu.png",color: Colors.blue.shade900,),
-          title: Text("Xentice",style: TextStyle(color: Colors.blue.shade700,fontSize: 28,),),
+          leading: Icon(Icons.sort,color: Colors.blue.shade900,),
+          title: Text("xentice",style: GoogleFonts.comfortaa(color: Colors.blue.shade700,fontSize: 28,)),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
